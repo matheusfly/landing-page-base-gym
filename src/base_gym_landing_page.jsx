@@ -5,6 +5,9 @@ import coach1 from './assets/coach_1.png';
 import coach2 from './assets/coach_2.jpg';
 import coach3 from './assets/coach_3.jpg';
 import coach4 from './assets/coach_4.jpg';
+import bBg from './assets/backgrounds/b_bg.png';
+import faixada from './assets/backgrounds/faixada.jpg';
+import aBg from './assets/backgrounds/a_bg.png';
 
 const coaches = [
   { image: coach1 },
@@ -108,37 +111,43 @@ export default function BaseLandingPage() {
       </section>
 
       {/* (BLOCO-2) Services Section */}
-      <section className="max-w-7xl mx-auto px-6 py-20 md:py-28">
-        <h2 className="text-4xl md:text-5xl font-bold text-lime mb-4 tracking-tight">Explore a Experiência BASE</h2>
-        <p className="text-lightOlive max-w-2xl mb-12 text-lg">
-          Cada serviço foi pensado para transformar seu corpo e mente com motivação constante e evolução real.
-        </p>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Calistenia com Propósito",
-              desc: "Peso corporal, definição, equilíbrio e consciência corporal.",
-              cta: "Saiba Mais"
-            },
-            {
-              title: "Escalada Indoor",
-              desc: "Para todos os públicos, divertida e desafiadora.",
-              cta: "Quero Escalar"
-            },
-            {
-              title: "Fisioterapia Esportiva",
-              desc: "Prevenção e recuperação com suporte técnico.",
-              cta: "Marcar Sessão"
-            }
-          ].map((service, i) => (
-            <div key={i} className="bg-olive rounded-xl p-8 text-white shadow-lg border border-transparent hover:border-lime transition-all duration-300 transform hover:-translate-y-2">
-              <h3 className="text-2xl font-bold text-lime mb-3">{service.title}</h3>
-              <p className="mb-6 text-grayLight">{service.desc}</p>
-              <button className="text-black bg-lime px-5 py-2 rounded-md font-semibold hover:bg-lime/90 transition-colors">
-                {service.cta}
-              </button>
-            </div>
-          ))}
+      <section 
+        className="relative bg-cover bg-center py-20 md:py-28"
+        style={{ backgroundImage: `url(${bBg})` }}
+      >
+        <div className="absolute inset-0 bg-baseDark opacity-70"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-lime mb-4 tracking-tight">Explore a Experiência BASE</h2>
+          <p className="text-white max-w-2xl mb-12 text-lg">
+            Cada serviço foi pensado para transformar seu corpo e mente com motivação constante e evolução real.
+          </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Calistenia com Propósito",
+                desc: "Peso corporal, definição, equilíbrio e consciência corporal.",
+                cta: "Saiba Mais"
+              },
+              {
+                title: "Escalada Indoor",
+                desc: "Para todos os públicos, divertida e desafiadora.",
+                cta: "Quero Escalar"
+              },
+              {
+                title: "Fisioterapia Esportiva",
+                desc: "Prevenção e recuperação com suporte técnico.",
+                cta: "Marcar Sessão"
+              }
+            ].map((service, i) => (
+              <div key={i} className="bg-olive rounded-xl p-8 text-white shadow-lg border border-transparent hover:border-lime transition-all duration-300 transform hover:-translate-y-2">
+                <h3 className="text-2xl font-bold text-lime mb-3">{service.title}</h3>
+                <p className="mb-6 text-grayLight">{service.desc}</p>
+                <button className="text-black bg-lime px-5 py-2 rounded-md font-semibold hover:bg-lime/90 transition-colors">
+                  {service.cta}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -168,24 +177,30 @@ export default function BaseLandingPage() {
       </section>
 
       {/* (BLOCO-4) Coaches Section */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-lime mb-4 tracking-tight">Uma Equipe Presente em Cada Etapa</h2>
-          <p className="text-lightOlive mb-12 max-w-3xl text-lg mx-auto">
-            Você será acompanhado por profissionais experientes, atentos e apaixonados pelo que fazem — incluindo atletas profissionais que vivem na prática o que ensinam.
-          </p>
-        </div>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {coaches.slice(0, 4).map((coach, index) => (
-              <div key={index} className="w-full h-96 rounded-lg overflow-hidden shadow-lg">
-                <img 
-                  src={coach.image} 
-                  alt={`Coach ${index + 1}`} 
-                  className="w-full h-full object-cover" 
-                />
-              </div>
-            ))}
+      <section 
+        className="relative bg-cover bg-center py-20 md:py-28"
+        style={{ backgroundImage: `url(${aBg})` }}
+      >
+        <div className="absolute inset-0 bg-baseDark opacity-80"></div>
+        <div className="relative z-10">
+          <div className="max-w-7xl mx-auto px-6 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-lime mb-4 tracking-tight">Uma Equipe Presente em Cada Etapa</h2>
+            <p className="text-white mb-12 max-w-3xl text-lg mx-auto">
+              Você será acompanhado por profissionais experientes, atentos e apaixonados pelo que fazem — incluindo atletas profissionais que vivem na prática o que ensinam.
+            </p>
+          </div>
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {coaches.slice(0, 4).map((coach, index) => (
+                <div key={index} className="w-full h-96 rounded-lg overflow-hidden shadow-lg">
+                  <img 
+                    src={coach.image} 
+                    alt={`Coach ${index + 1}`} 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -296,8 +311,13 @@ export default function BaseLandingPage() {
       </section>
 
       {/* (BLOCO-6.5) Location Section */}
-      <section className="max-w-7xl mx-auto px-6 py-20 md:py-28 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-lime mb-4 tracking-tight">Nossa Localização</h2>
+      <section 
+        className="relative bg-cover bg-center py-20 md:py-28"
+        style={{ backgroundImage: `url(${faixada})` }}
+      >
+        <div className="absolute inset-0 bg-baseDark opacity-70"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-lime mb-4 tracking-tight">Nossa Localização</h2>
         <p className="text-lightOlive mb-12 max-w-3xl text-lg mx-auto">
           Venha nos visitar e conhecer nossa estrutura de perto.
         </p>
@@ -316,6 +336,7 @@ export default function BaseLandingPage() {
          <p className="text-lightOlive mt-4">
           R. Alfredo Magalhães, N° 115 - Barra, Salvador - BA, 40140-140
         </p>
+        </div>
       </section>
 
       <WhatsAppButton />
