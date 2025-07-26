@@ -1,7 +1,23 @@
+version: '3.8'
+
 services:
-  web:
+  # The backend service, built from the backend/Dockerfile
+  backend:
+    build: ./backend
+    # We don't need to expose ports to the host, as Nginx will proxy requests.
+    restart: always # Ensures the service restarts if it crashes or the VM reboots
+
+  # The frontend service, which also acts as the public-facing web server
+  frontend:
     build:
       context: .
-      dockerfile: backend/Dockerfile
+      dockerfile: Dockerfile.frontend
     ports:
-      - "8081:8081"
+      # Map port 80 on the VM to port 80 in the container.
+      # This makes your app accessible via the public IP.
+      - "80:80"
+    restart: always
+    depends_on:
+      # Tells Docker to start the backend before the frontend
+      - backend
+
