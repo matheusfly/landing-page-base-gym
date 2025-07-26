@@ -1,6 +1,7 @@
 // BASE Landing Page Figma-Compatible Layout
 // Built using Tailwind CSS classes for clarity
 
+import React from 'react';
 import coach1 from './assets/coach_1.png';
 import coach2 from './assets/coach_2.jpg';
 import coach3 from './assets/coach_3.jpg';
@@ -8,6 +9,8 @@ import coach4 from './assets/coach_4.jpg';
 import bBg from './assets/backgrounds/b_bg.png';
 import faixada from './assets/backgrounds/faixada.jpg';
 import aBg from './assets/backgrounds/a_bg.png';
+import logoPattern from './assets/logo_pattern.png';
+import treinoBaseImg from './assets/IMG_0041.jpg';
 
 const coaches = [
   { image: coach1 },
@@ -24,6 +27,7 @@ const pricingPlans = [
     installments: "em até 2x",
     total: null,
     popular: false,
+    link: "https://app.tecnofit.com.br/ng/online-sale/MTQ5MzQw/checkout/ODk2Mzk5/site"
   },
   {
     title: "CALISTENIA 5X SEMANAL",
@@ -32,6 +36,7 @@ const pricingPlans = [
     installments: "Total R$ 2.610,00",
     total: null,
     popular: true,
+    link: "https://app.tecnofit.com.br/ng/online-sale/MTQ5MzQw/checkout/ODk2NDE0/site"
   },
   {
     title: "ESCALADA AULA AVULSA",
@@ -40,6 +45,7 @@ const pricingPlans = [
     installments: null,
     total: null,
     popular: false,
+    link: "https://app.tecnofit.com.br/ng/online-sale/MTQ5MzQw/checkout/ODk2Mzk3/site"
   },
   {
     title: "FISIOTERAPIA AVULSA",
@@ -48,11 +54,12 @@ const pricingPlans = [
     installments: null,
     total: null,
     popular: false,
+    link: "https://app.tecnofit.com.br/ng/online-sale/MTQ5MzQw/checkout/ODk2Mzk5/site"
   }
 ];
 
 const WhatsAppButton = () => {
-  const phoneNumber = "5571999999999"; // Placeholder number, user should replace
+  const phoneNumber = "5571982495275";
   const message = "Olá! Tenho uma dúvida sobre a BASE e gostaria de mais informações.";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -71,6 +78,23 @@ const WhatsAppButton = () => {
   );
 };
 
+const UberButton = () => {
+  const uberLink = "https://m.uber.com/looking?drop[0]=%7B%22latitude%22%3A-13.0087211%2C%22longitude%22%3A-38.5293016%2C%22addressLine1%22%3A%22Base%20Calistenia%20e%20Performance%22%2C%22addressLine2%22%3A%22R.%20Alfredo%20Magalh%C3%A3es%2C%20115%20-%20Barra%2C%20Salvador%20-%20BA%2C%2040140-140%22%7D";
+
+  return (
+    <a
+      href={uberLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-black text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="mr-2">
+        <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm4.963 13.931c-.14.42-.52.701-.963.701h-1.25c-.41 0-.76-.281-.89-.681l-.99-2.969h-3.74l-.99 2.969c-.13.4-.48.681-.89.681h-1.25c-.443 0-.823-.281-.963-.701-.14-.42-.04-.881.25-1.201l4.5-5.5c.3-.361.75-.581 1.25-.581s.95.22 1.25.581l4.5 5.5c.29.32.39.781.25 1.201zm-5.213-3.931h2.5l-1.25-1.531-1.25 1.531z"/>
+      </svg>
+      Chamar um Uber
+    </a>
+  );
+};
 
 export default function BaseLandingPage() {
   return (
@@ -79,21 +103,23 @@ export default function BaseLandingPage() {
       <section className="max-w-7xl mx-auto px-6 py-24 md:py-32 grid md:grid-cols-2 gap-12 items-center">
         <div className="wow fadeIn" data-wow-delay="0.2s">
           <div className="bg-lime p-2 rounded-xl inline-block mb-8 shadow-lg shadow-lime/20">
-            <img src="/src/assets/logo_pattern.png" alt="BASE Logo Placeholder" className="w-48 rounded-md" />
+            <img src={logoPattern} alt="BASE Logo Placeholder" className="w-48 rounded-md" />
           </div>
           <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter leading-tight mb-4 text-lime">
             CONQUISTE O CORPO FORTE E DEFINIDO
           </h1>
-          <p className="text-lg text-lightOlive mb-8 max-w-xl">
+          <p className="text-white text-lightO mb-8 max-w-xl">
             A força que você busca começa aqui. Descubra o método BASE:
             Aqui, o treino com peso corporal é eficiente, estético e funcional com progressão real, conexão mente-músculo e acompanhamento próximo. Esqueça treinos monótonos: experimente uma new forma de evoluir.
           </p>
-          <button className="bg-lime text-black px-8 py-4 rounded-xl font-bold shadow-lg shadow-lime/20 hover:scale-105 hover:shadow-xl hover:shadow-lime/30 transition-all duration-300">
-            Agende Aula Experimental
-          </button>
+          <a href="https://app.tecnofit.com.br/ng/online-sale/MTQ5MzQw/checkout/OTQxNzgy/forms" target="_blank" rel="noopener noreferrer">
+            <button className="bg-lime text-black px-8 py-4 rounded-xl font-bold shadow-lg shadow-lime/20 hover:scale-105 hover:shadow-xl hover:shadow-lime/30 transition-all duration-300">
+              Agende Aula Experimental
+            </button>
+          </a>
         </div>
         <div className="wow fadeIn" data-wow-delay="0.4s">
-          <img src="/src/assets/IMG_0041.jpg" alt="Treino BASE" className="rounded-2xl shadow-2xl object-cover w-full h-full" />
+          <img src={treinoBaseImg} alt="Treino BASE" className="rounded-2xl shadow-2xl object-cover w-full h-full" />
         </div>
       </section>
 
@@ -126,25 +152,30 @@ export default function BaseLandingPage() {
               {
                 title: "Calistenia com Propósito",
                 desc: "Peso corporal, definição, equilíbrio e consciência corporal.",
-                cta: "Saiba Mais"
+                cta: "Saiba Mais",
+                link: "https://app.tecnofit.com.br/ng/online-sale/MTQ5MzQw/checkout/ODk2Mzk2/site"
               },
               {
                 title: "Escalada Indoor",
                 desc: "Para todos os públicos, divertida e desafiadora.",
-                cta: "Quero Escalar"
+                cta: "Quero Escalar",
+                link: "https://app.tecnofit.com.br/ng/online-sale/MTQ5MzQw/checkout/ODk2Mzk3/site"
               },
               {
-                title: "Fisioterapia Esportiva",
+                title: "Fisioterapia",
                 desc: "Prevenção e recuperação com suporte técnico.",
-                cta: "Marcar Sessão"
+                cta: "Marcar Sessão",
+                link: "https://app.tecnofit.com.br/ng/online-sale/MTQ5MzQw/checkout/ODk2Mzk5/site"
               }
             ].map((service, i) => (
               <div key={i} className="bg-olive rounded-xl p-8 text-white shadow-lg border border-transparent hover:border-lime transition-all duration-300 transform hover:-translate-y-2">
                 <h3 className="text-2xl font-bold text-lime mb-3">{service.title}</h3>
                 <p className="mb-6 text-grayLight">{service.desc}</p>
-                <button className="text-black bg-lime px-5 py-2 rounded-md font-semibold hover:bg-lime/90 transition-colors">
-                  {service.cta}
-                </button>
+                <a href={service.link} target="_blank" rel="noopener noreferrer">
+                  <button className="text-black bg-lime px-5 py-2 rounded-md font-semibold hover:bg-lime/90 transition-colors">
+                    {service.cta}
+                  </button>
+                </a>
               </div>
             ))}
           </div>
@@ -228,9 +259,11 @@ export default function BaseLandingPage() {
                   <p className="text-lightOlive group-hover:text-olive font-semibold mt-2">{plan.planDuration}</p>
                   {plan.installments && <p className="text-grayMedium group-hover:text-olive/80 text-sm">{plan.installments}</p>}
                 </div>
-                <button className="w-full bg-lime text-black font-bold py-3 rounded-lg border-2 border-lime group-hover:bg-baseDark group-hover:text-lime group-hover:border-baseDark transition-all duration-300">
-                  SELECIONAR
-                </button>
+                <a href={plan.link} target="_blank" rel="noopener noreferrer" className="w-full">
+                  <button className="w-full bg-lime text-black font-bold py-3 rounded-lg border-2 border-lime group-hover:bg-baseDark group-hover:text-lime group-hover:border-baseDark transition-all duration-300">
+                    SELECIONAR
+                  </button>
+                </a>
               </div>
             ))}
           </div>
@@ -258,13 +291,13 @@ export default function BaseLandingPage() {
         </h2>
         <div className="max-w-2xl mx-auto">
           <h3 className="text-2xl font-bold text-lime mb-3">Horários Calistenia</h3>
-          <p className="text-lightOlive mb-6 text-lg">
+          <p className="text-gray-300 mb-6 text-lg">
             Seg, Qua, Sex: Push/Pull/Core → 6h – 20h
             <br />
             Ter, Qui: Leg Training → 6h – 19h
           </p>
           <h3 className="text-2xl font-bold text-lime mt-8 mb-3">Horários Escalada</h3>
-          <p className="text-lightOlive text-lg">
+          <p className="text-gray-300 text-lg">
             Segunda a Sexta → 6h às 20h
           </p>
           <p className="italic text-lightOlive text-sm mt-2">
@@ -303,9 +336,11 @@ export default function BaseLandingPage() {
             <li className="flex items-center gap-3"><span className="text-lime font-bold text-xl">✓</span> Suporte técnico e humano</li>
             <li className="flex items-center gap-3"><span className="text-lime font-bold text-xl">✓</span> Ambiente climatizado e motivador</li>
           </ul>
-          <button className="bg-lime text-black px-8 py-4 rounded-xl font-bold mt-4 shadow-xl shadow-lime/20 hover:scale-105 hover:shadow-2xl hover:shadow-lime/30 transition-all duration-300">
-            👉 Agende Sua Aula Experimental
-          </button>
+          <a href="https://app.tecnofit.com.br/ng/online-sale/MTQ5MzQw/checkout/OTQxNzgy/forms" target="_blank" rel="noopener noreferrer">
+            <button className="bg-lime text-black px-8 py-4 rounded-xl font-bold mt-4 shadow-xl shadow-lime/20 hover:scale-105 hover:shadow-2xl hover:shadow-lime/30 transition-all duration-300">
+              👉 Agende Sua Aula Experimental
+            </button>
+          </a>
           <p className="text-sm text-lightOlive mt-6">📍 Barra, Salvador </p>
         </div>
       </section>
@@ -318,10 +353,14 @@ export default function BaseLandingPage() {
         <div className="absolute inset-0 bg-baseDark opacity-70"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-lime mb-4 tracking-tight">Nossa Localização</h2>
-        <p className="text-lightOlive mb-12 max-w-3xl text-lg mx-auto">
+        <p className="text-white mb-4 max-w-3xl text-lg mx-auto">
           Venha nos visitar e conhecer nossa estrutura de perto.
         </p>
-        <div className="rounded-xl overflow-hidden shadow-2xl border-4 border-olive">
+        <p className="text-lightOlive mb-4">
+          R. Alfredo Magalhães, N° 115 - Barra, Salvador - BA, 40140-140
+        </p>
+        <UberButton />
+        <div className="rounded-xl overflow-hidden shadow-2xl border-4 border-olive mt-8">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.81436298123!2d-38.51940362568916!3d-12.98373399084801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7160518d377556d%3A0x83a1349138513f4f!2sR.%20Alfredo%20Magalh%C3%A3es%2C%20115%20-%20Barra%2C%20Salvador%20-%20BA%2C%2040140-140!5e0!3m2!1spt-BR!2sbr!4v1722034567890!5m2!1spt-BR!2sbr"
             width="100%"
@@ -333,9 +372,6 @@ export default function BaseLandingPage() {
             title="Localização da BASE"
           ></iframe>
         </div>
-         <p className="text-lightOlive mt-4">
-          R. Alfredo Magalhães, N° 115 - Barra, Salvador - BA, 40140-140
-        </p>
         </div>
       </section>
 
