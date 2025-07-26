@@ -110,7 +110,7 @@ export default function BaseLandingPage() {
           </h1>
           <p className="text-white text-lightO mb-8 max-w-xl">
             A força que você busca começa aqui. Descubra o método BASE:
-            Aqui, o treino com peso corporal é eficiente, estético e funcional com progressão real, conexão mente-músculo e acompanhamento próximo. Esqueça treinos monótonos: experimente uma new forma de evoluir.
+            Aqui, o treino com peso corporal é eficiente, estético e funcional com progressão real, conexão mente-músculo e acompanhamento próximo. Esqueça treinos monótonos: experimente uma nova forma de evoluir.
           </p>
           <a href="https://app.tecnofit.com.br/ng/online-sale/MTQ5MzQw/checkout/OTQxNzgy/forms" target="_blank" rel="noopener noreferrer">
             <button className="bg-lime text-black px-8 py-4 rounded-xl font-bold shadow-lg shadow-lime/20 hover:scale-105 hover:shadow-xl hover:shadow-lime/30 transition-all duration-300">
