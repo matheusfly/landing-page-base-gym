@@ -7,12 +7,18 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve the app with Flask and Waitress
-FROM python:3.8-slim
-WORKDIR /app
-COPY --from=build /app/dist ./dist
-COPY backend/requirements.txt .
-COPY backend/app.py .
-COPY backend/run.py .
+# Use a stable, slim Python image
+FROM python:3.10-slim
+
+WORKDIR /app_backend
+
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-EXPOSE 8081
-CMD ["python", "run.py"]
+
+COPY . .
+
+# Run the app with Gunicorn. It will look for the 'app' object in the 'app.py' file.
+# Bind to 0.0.0.0 so it's accessible from other Docker containers.
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+
+
