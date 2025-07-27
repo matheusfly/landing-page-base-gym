@@ -11,6 +11,7 @@ import faixada from './assets/backgrounds/faixada.jpg';
 import aBg from './assets/backgrounds/a_bg.png';
 import logoPattern from './assets/logo_pattern.png';
 import treinoBaseVideo from './assets/Reels_Base_Calistenia.mp4';
+import testimonialBg from './assets/IMG_0041.jpg';
 
 const coaches = [
   { image: coach1 },
@@ -105,7 +106,7 @@ export default function BaseLandingPage() {
           <div className="bg-lime p-2 rounded-xl inline-block mb-8 shadow-lg shadow-lime/20">
             <img src={logoPattern} alt="BASE Logo Placeholder" className="w-48 rounded-md" />
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-tight mb-4 text-lime">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-tight mb-4 text-lime [text-shadow:0_0_15px_var(--tw-shadow-color)] shadow-lime/50">
             CONQUISTE O CORPO FORTE E DEFINIDO
           </h1>
           <p className="text-white text-lightO mb-8 max-w-xl">
@@ -113,16 +114,16 @@ export default function BaseLandingPage() {
             Aqui, o treino com peso corporal é eficiente, estético e funcional com progressão real, conexão mente-músculo e acompanhamento próximo. Esqueça treinos monótonos: experimente uma nova forma de evoluir.
           </p>
           <a href="https://app.tecnofit.com.br/ng/online-sale/MTQ5MzQw/checkout/OTQxNzgy/forms" target="_blank" rel="noopener noreferrer">
-            <button className="bg-lime text-black px-8 py-4 rounded-xl font-bold shadow-lg shadow-lime/20 hover:scale-105 hover:shadow-xl hover:shadow-lime/30 transition-all duration-300">
+            <button className="bg-lime text-black px-8 py-4 rounded-xl font-bold shadow-xl shadow-lime/40 hover:scale-105 hover:shadow-2xl hover:shadow-lime/50 transition-all duration-300">
               Agende Aula Experimental
             </button>
           </a>
         </div>
-        <div className="wow fadeIn aspect-w-4 aspect-h-3" data-wow-delay="0.4s">
+        <div className="wow fadeIn aspect-w-4 aspect-h-3 rounded-2xl shadow-2xl shadow-lime/30" data-wow-delay="0.4s">
           <video 
             src={treinoBaseVideo} 
             alt="Treino BASE" 
-            className="rounded-2xl shadow-2xl object-cover w-full h-full" 
+            className="rounded-2xl object-cover w-full h-full" 
             autoPlay 
             loop 
             muted 
@@ -315,20 +316,28 @@ export default function BaseLandingPage() {
       </section>
 
       {/* (BLOCO-6) Testimonials Section */}
-      <section className="max-w-4xl mx-auto px-6 py-20 md:py-28 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-lime mb-6 tracking-tight">O que dizem sobre a BASE?</h2>
-        <blockquote className="text-grayLight italic text-xl md:text-2xl leading-relaxed">
-          “A melhor academia que já treinei. Ambiente inspirador, aulas dinâmicas e equipe atenciosa. Tratei uma lesão no ombro e evoluí com prazer no treino.”
-        </blockquote>
-        <div className="mt-6 flex items-center justify-center gap-4">
-          <img 
-            src="https://images.pexels.com/photos/2247179/pexels-photo-2247179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-            alt="Ana C." 
-            className="w-14 h-14 rounded-full object-cover border-2 border-lime"
-          />
-          <div>
-            <p className="text-lightOlive font-semibold">— Ana C.</p>
-            <p className="text-sm text-grayMedium">Aluna da BASE</p>
+      <section 
+        className="relative py-20 md:py-28 bg-cover bg-fixed bg-center"
+        style={{ backgroundImage: `url(${testimonialBg})` }}
+      >
+        <div className="absolute inset-0 bg-baseDark/30"></div>
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
+          <div className="bg-baseDark/10 backdrop-blur-lg p-8 md:p-12 rounded-2xl border border-olive/50">
+            <h2 className="text-4xl md:text-5xl font-bold text-lime mb-6 tracking-tight">O que dizem sobre a BASE?</h2>
+            <blockquote className="text-grayLight italic text-xl md:text-2xl leading-relaxed">
+              “A melhor academia que já treinei. Ambiente inspirador, aulas dinâmicas e equipe atenciosa. Tratei uma lesão no ombro e evoluí com prazer no treino.”
+            </blockquote>
+            <div className="mt-6 flex items-center justify-center gap-4">
+              <img 
+                src="https://images.pexels.com/photos/2247179/pexels-photo-2247179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                alt="Ana C." 
+                className="w-14 h-14 rounded-full object-cover border-2 border-lime"
+              />
+              <div>
+                <p className="text-lightOlive font-semibold">— Ana C.</p>
+                <p className="text-sm text-grayMedium">Aluna da BASE</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
