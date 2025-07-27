@@ -10,6 +10,7 @@ import bBg from './assets/backgrounds/b_bg.png';
 import faixada from './assets/backgrounds/faixada.jpg';
 import aBg from './assets/backgrounds/a_bg.png';
 import logoPattern from './assets/logo_pattern.png';
+import treinoBaseVideo from './assets/Reels_Base_Calistenia.mp4';
 import testimonialBg from './assets/IMG_0041.jpg';
 
 const coaches = [
@@ -119,14 +120,15 @@ export default function BaseLandingPage() {
           </a>
         </div>
         <div className="wow fadeIn aspect-w-4 aspect-h-3 rounded-2xl shadow-2xl shadow-lime/30" data-wow-delay="0.4s">
-          <iframe 
-            className="w-full h-full rounded-2xl"
-            src="https://www.youtube.com/embed/3n1XPjPw6yE?autoplay=1&loop=1&mute=1&playlist=3n1XPjPw6yE&controls=0&showinfo=0&autohide=1"
-            title="YouTube video player" 
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen>
-          </iframe>
+          <video 
+            src={treinoBaseVideo} 
+            alt="Treino BASE" 
+            className="rounded-2xl object-cover w-full h-full" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+          />
         </div>
       </section>
 
