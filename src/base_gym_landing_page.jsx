@@ -10,7 +10,7 @@ import bBg from './assets/backgrounds/b_bg.png';
 import faixada from './assets/backgrounds/faixada.jpg';
 import aBg from './assets/backgrounds/a_bg.png';
 import logoPattern from './assets/logo_pattern.png';
-import treinoBaseImg from './assets/IMG_0041.jpg';
+import treinoBaseVideo from './assets/Reels_Base_Calistenia.mp4';
 
 const coaches = [
   { image: coach1 },
@@ -105,7 +105,7 @@ export default function BaseLandingPage() {
           <div className="bg-lime p-2 rounded-xl inline-block mb-8 shadow-lg shadow-lime/20">
             <img src={logoPattern} alt="BASE Logo Placeholder" className="w-48 rounded-md" />
           </div>
-          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tighter leading-tight mb-4 text-lime">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-tight mb-4 text-lime">
             CONQUISTE O CORPO FORTE E DEFINIDO
           </h1>
           <p className="text-white text-lightO mb-8 max-w-xl">
@@ -118,8 +118,16 @@ export default function BaseLandingPage() {
             </button>
           </a>
         </div>
-        <div className="wow fadeIn" data-wow-delay="0.4s">
-          <img src={treinoBaseImg} alt="Treino BASE" className="rounded-2xl shadow-2xl object-cover w-full h-full" />
+        <div className="wow fadeIn aspect-w-4 aspect-h-3" data-wow-delay="0.4s">
+          <video 
+            src={treinoBaseVideo} 
+            alt="Treino BASE" 
+            className="rounded-2xl shadow-2xl object-cover w-full h-full" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+          />
         </div>
       </section>
 
@@ -224,10 +232,10 @@ export default function BaseLandingPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {coaches.slice(0, 4).map((coach, index) => (
                 <div key={index} className="w-full h-96 rounded-lg overflow-hidden shadow-lg">
-                  <img 
-                    src={coach.image} 
-                    alt={`Coach ${index + 1}`} 
-                    className="w-full h-full object-cover" 
+                  <img
+                    src={coach.image}
+                    alt={`Coach ${index + 1}`}
+                    className="w-full h-full object-cover object-top md:object-center"
                   />
                 </div>
               ))}
@@ -253,7 +261,7 @@ export default function BaseLandingPage() {
                 <div className="mb-6 flex-grow">
                   <p className="text-grayLight group-hover:text-baseDark">
                     <span className="text-3xl font-bold text-lime group-hover:text-olive">R$</span>
-                    <span className="text-6xl font-extrabold text-lime group-hover:text-olive tracking-tighter">{plan.price}</span>
+                    <span className="text-5xl md:text-6xl font-extrabold text-lime group-hover:text-olive tracking-tighter">{plan.price}</span>
                     <span className="text-3xl font-bold text-lime group-hover:text-olive">,00</span>
                   </p>
                   <p className="text-lightOlive group-hover:text-olive font-semibold mt-2">{plan.planDuration}</p>
