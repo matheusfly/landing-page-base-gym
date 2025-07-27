@@ -1,0 +1,13 @@
+# Ignore node_modules
+node_modules
+
+# Ignore build artifacts
+dist
+build
+
+# Ignore certbot data, it's mounted as a volume, not needed in build context
+data/
+
+# Ignore local development files
+npm-debug.log
+.env
