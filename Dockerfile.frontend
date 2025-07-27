@@ -8,6 +8,9 @@ RUN npm install
 COPY . .
 RUN npm run build
 
+# Debug: List the contents of the build output directory
+RUN ls -lR /app/dist
+
 # Stage 2: Serve with Nginx
 FROM nginx:stable-alpine
 
