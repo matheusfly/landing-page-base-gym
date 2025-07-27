@@ -10,7 +10,7 @@ describe('External Link Buttons', () => {
   it('renders the WhatsApp button with the correct link', () => {
     const whatsappButton = screen.getByLabelText('Fale conosco pelo WhatsApp');
     expect(whatsappButton).toBeInTheDocument();
-    expect(whatsappButton).toHaveAttribute('href', 'https://wa.me/5571999999999?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20BASE%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.');
+    expect(whatsappButton).toHaveAttribute('href', 'https://wa.me/5571982495275?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20BASE%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.');
   });
 
   it('renders the Uber button with the correct link', () => {
