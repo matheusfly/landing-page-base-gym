@@ -104,7 +104,7 @@ export default function BaseLandingPage() {
       <section className="max-w-7xl mx-auto px-6 py-24 md:py-32 grid md:grid-cols-2 gap-12 items-center">
         <div className="wow fadeIn" data-wow-delay="0.2s">
           <div className="bg-lime p-2 rounded-xl inline-block mb-8 shadow-lg shadow-lime/20">
-            <img src={logoPattern} alt="BASE Logo Placeholder" className="w-48 rounded-md" />
+            <img src={logoPattern} alt="BASE Logo Placeholder" className="w-32 h-22 object-contain" />
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tighter leading-tight mb-4 text-lime [text-shadow:0_0_15px_var(--tw-shadow-color)] shadow-lime/50">
             CONQUISTE O CORPO FORTE E DEFINIDO
