@@ -101,6 +101,53 @@ sequenceDiagram
 
 ## 4. Suíte de Testes
 
+## 4. CI/CD Pipeline
+
+O projeto utiliza GitHub Actions para automação de testes e deploy. O fluxo de CI/CD inclui:
+
+### Workflows
+
+1. **Testes Automatizados**
+   - Testes unitários do backend (pytest)
+   - Testes E2E com Playwright
+   - Geração de relatórios de cobertura
+   - Validação de formatação de código
+
+2. **Deploy Automático**
+   - Deploy para Railway quando os testes passarem na branch `main` ou `master`
+   - Notificações de status
+
+### Configuração
+
+1. **Variáveis de Ambiente Necessárias**
+   Adicione os seguintes segredos no GitHub (Settings > Secrets and variables > Actions):
+   - `RAILWAY_SERVICE_ID`: ID do serviço no Railway
+   - `RAILWAY_TOKEN`: Token de acesso ao Railway
+   - `PFX_PASSWORD`: Senha do certificado (se aplicável)
+
+2. **Execução Local**
+   Para rodar os testes localmente de forma similar ao CI:
+   ```bash
+   # Instalar dependências
+   cd backend
+   pip install -r requirements.txt
+   
+   # Rodar testes do backend
+   pytest tests/ -v --cov=app
+   
+   # Rodar testes E2E
+   cd ..
+   npm install
+   npx playwright install
+   npx playwright test
+   ```
+
+3. **Artefatos**
+   - Relatórios de cobertura são enviados para o Codecov
+   - Relatórios do Playwright são disponibilizados como artefatos no GitHub Actions
+
+## 5. Testes
+
 Esta seção detalha a suíte de testes da aplicação, cobrindo tanto o backend quanto o frontend para garantir a qualidade e a estabilidade do código.
 
 ### Testes Unitários (Unit Tests)
