@@ -3,8 +3,8 @@
 [build]
   # Base directory: leave empty for root
   base = ""
-  # Build command to run
-  command = "npm install && npm run build"
+  # Build command with proper Node.js setup
+  command = "npm ci && npx vite build"
   # Directory to publish
   publish = "dist"
 
@@ -14,11 +14,11 @@
   NODE_VERSION = "18"
 
 # Branch-specific build settings
-[context.production]
-  command = "npm install && npm run build"
+# [context.production]
+#   command = "npm install && npm run build"
   
-[context.branch-deploy]
-  command = "npm install && npm run build"
+# [context.branch-deploy]
+#   command = "npm install && npm run build"
 
 # Headers for security and caching
 [[headers]]
