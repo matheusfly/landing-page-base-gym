@@ -176,7 +176,85 @@ copilot init --app saas --name web --type 'Load Balanced Web Service' --dockerfi
 
 ---
 
-## 8. FAQ  
+## 8. Boilerplate `Dockerfile.frontend`
+A ready-to-copy multi-stage Dockerfile that turns your **React/Vite** (or any static) front-end into a production-grade, ultra-small image.
+
+```dockerfile
+#--------------------------------------------------------------
+# --- 1️⃣  Build stage -----------------------------------------
+#--------------------------------------------------------------
+#  • Uses BuildKit cache mounts to speed up CI by ~70 %
+#  • Everything stays in /app (no global installs)
+#--------------------------------------------------------------
+FROM node:18-alpine AS builder
+WORKDIR /app
+
+# Install deps using an LRU-cached npm directory
+RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts
+
+# Copy *only* files needed for a production build first (optimises cache)
+COPY package*.json vite.config.* tsconfig.json ./
+RUN npm ci --ignore-scripts --prod
+
+# Copy the rest and build
+COPY . .
+RUN npm run build
+
+#--------------------------------------------------------------
+# --- 2️⃣  Runtime stage ---------------------------------------
+#--------------------------------------------------------------
+#  • nginx:alpine = ~5 MB attack surface
+#  • Add healthcheck for Docker Swarm / ECS / K8s
+#--------------------------------------------------------------
+FROM nginx:1.27-alpine AS runtime
+
+ENV TZ="UTC" \
+    LANG="C.UTF-8" \
+    NGINX_ENVSUBST_OUTPUT_DIR="/etc/nginx/conf.d"
+
+# Remove default config & copy a minimalist one
+RUN rm /etc/nginx/conf.d/default.conf
+COPY infra/nginx/frontend.conf /etc/nginx/conf.d/app.conf
+
+# Copy static assets from builder
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expose 80 for local dev, 8080 in prod platforms (Herokuish etc.)
+EXPOSE 80 8080
+
+HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- http://localhost || exit 1
+
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+> **Tip**: Store the Nginx conf under `infra/nginx/frontend.conf` so the Dockerfile stays clean.
+
+---
+
+## 9. Deployment Roadmap for a *Small-Team* SaaS
+This roadmap shows a pragmatic path from **local dev** to **planet-scale** while keeping ops overhead low.
+
+| Phase | Infra | CLI / Service | Goal |
+|-------|-------|---------------|------|
+| 0 | Local Docker Compose | `docker compose` | On-board devs in seconds |
+| 1 | Remote CI | GitHub Actions + BuildKit cache | Reproducible builds, unit tests |
+| 2 | Preview Envs | **Netlify** (FE) + **Railway** (BE) | Every PR auto-deploys, team can click-test |
+| 3 | Staging | **Fly.io** or **Render** | Full-stack staging with SSL, DB snapshots |
+| 4 | Production MVP | **AWS ECS Fargate** via *Copilot* | Zero-ops, pay-per-request |
+| 5 | Scale-out | **Kubernetes** (EKS/GKE) + Helm | Multi-region, blue-green deploys |
+
+### Key Milestones
+1. **GitHub > Docker Hub / GHCR** – Push images tagged with commit SHA.
+2. **Secret Management** – Use GH secrets → Copilot params → AWS SSM.
+3. **Observability** – Start early with Grafana Cloud or Datadog sidecars.
+4. **Cost Guardrails** – Enable budgets & alerts before traffic hits.
+5. **Disaster Recovery** – Scheduled DB snapshots, object-storage backups.
+
+> Each phase should be *production-ready* for its scale. You can pause at any phase until the team or traffic grows.
+
+---
+
+## 10. FAQ
 **Q:** *Can I mix multi-stage Dockerfiles with Traefik?*  
 **A:** Absolutely – the image structure is independent of the runtime routing layer.
 
@@ -185,7 +263,7 @@ copilot init --app saas --name web --type 'Load Balanced Web Service' --dockerfi
 
 ---
 
-## 9. References
+## 11. References
 - Docker Docs – Best practices for multi-container applications  
 - BuildKit – https://docs.docker.com/build/ 
 - Traefik – https://traefik.io
